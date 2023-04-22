@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+            background-image: linear-gradient(to bottom right, #22b8cf, #81c784);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+
+        .waviy {
+            position: relative;
+        }
+
+        .waviy span{
+            position: relative;
+            display: inline-block;
+            font-size: 40px;
+            color: #e12626;
+            text-transform: uppercase;
+            animation: flip 6s infinite;
+            animation-delay: calc(2.2s * var(--i))
+        }
+
+        @keyframes flip {
+
+            0%,
+            80% {
+                transform: rotateY(360deg)
+            }
+        }
+
+
+
+
+        textarea {
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #999;
+            color: #333;
+            font-size: 1.5rem;
+            height: 200px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            resize: none;
+            width: 100%;
+            transition: box-shadow 0.2s ease-in-out;
+        }
+
+        textarea:focus {
+            box-shadow: 2px 2px 5px #22b8cf;
+        }
+
+        button {
+            background-color: #81c784;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px #999;
+            color: #fcfcfc;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+        }
+
+        .result {
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .result.show {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waviy">
+        <span style="--i:1">W</span>
+        <span style="--i:2">o</span>
+        <span style="--i:3">r</span>
+        <span style="--i:4">d</span>
+        <span >.</span>
+        <span >.</span>
+        
+        <span style="--i:5">a</span>
+        <span style="--i:6">n</span>
+        <span style="--i:7">d</span>
+        <span >.</span>
+        <span >.</span>
+
+        <span style="--i:8">W</span>
+        <span style="--i:9">h</span>
+        <span style="--i:10">i</span>
+        <span style="--i:11">t</span>
+        <span style="--i:12">e</span>
+        <span style="--i:13">s</span>
+        <span style="--i:14">p</span>
+        <span style="--i:15">a</span>
+        <span style="--i:15">c</span>
+        <span style="--i:16">e</span>
+        <span >.</span>
+        <span >.</span>
+
+        <span style="--i:17">C</span>
+        <span style="--i:18">a</span>
+        <span style="--i:19">l</span>
+        <span style="--i:20">c</span>
+        <span style="--i:21">u</span>
+        <span style="--i:22">l</span>
+        <span style="--i:23">a</span>
+        <span style="--i:24">t</span>
+        <span style="--i:25">o</span>
+        <span style="--i:26">r</span>
+        
+    </div>
+
+    <!-- <h1>Word and Whitespace Calculator</h1> -->
+    <textarea id="text"></textarea>
+    <button onclick="countWordsAndWhitespace()">Count Words and Whitespace</button>
+    <p>Number of words: <span id="wordCount"></span></p>
+    <p>Number of whitespace: <span id="whitespaceCount"></span></p>
+    <script>
+        function countWordsAndWhitespace() {
+            // Get the text from the textarea
+            var text = document.getElementById("text").value;
+
+            // Count the number of words
+            var wordCount = text.trim().split(/\s+/).length;
+
+            // Count the number of whitespace
+            var whitespaceCount = text.split(/\S/).length - 1;
+
+            // Display the results
+            document.getElementById("wordCount").textContent = wordCount;
+            document.getElementById("whitespaceCount").textContent = whitespaceCount;
+            document.querySelectorAll('.result').forEach(function (result) {
+                result.classList.add('show');
+            });
+        }
+    </script>
+</body>
+
+</html>
